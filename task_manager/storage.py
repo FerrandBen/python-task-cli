@@ -1,6 +1,6 @@
 import json
 
-from task import Task
+from .task import Task
 import os
 
 FILE_PATH = "data/tasks.json"
@@ -14,9 +14,10 @@ def save_tasks(task_list):
 
 
 def load_tasks():
-    if os.path.exists(FILE_PATH):
-        with open(FILE_PATH, "r") as file:
-            data = json.load(file)
-        return [Task.from_dict(item) for item in data]
-    else:
+    try:
+        if os.path.exists(FILE_PATH):
+            with open(FILE_PATH, "r") as file:
+                data = json.load(file)
+            return [Task.from_dict(item) for item in data]
+    except json.JSONDecodeError:
         return []

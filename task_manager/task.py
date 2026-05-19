@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-import datetime
+from datetime import datetime, timezone
 import uuid
 
 
@@ -8,7 +8,7 @@ class Task:
     title: str
     id: str = str(uuid.uuid1())
     done: bool = field(default=False)
-    created_at: datetime = field(default_factory=datetime.utcnow)
+    created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
     def mark_as_done(self):
         self.done = True
@@ -32,3 +32,7 @@ class Task:
             done=newdict["status"],
             created_at=newdict["date"],
         )
+    
+    def __str__(self):
+
+        return f"{'[x]' if self.done else '[]'} {self.id} - {self.title} créée le {self.created_at[:10]}"
