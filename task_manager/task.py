@@ -30,9 +30,9 @@ class Task:
             title=newdict["title"],
             id=newdict["id"],
             done=newdict["status"],
-            created_at=newdict["date"],
+            created_at=datetime.fromisoformat(newdict["date"]),
         )
-    
+
     def __str__(self):
 
         return f"{'[x]' if self.done else '[]'} {self.id} - {self.title} créée le {self.created_at[:10]}"
