@@ -17,8 +17,10 @@ class Task_manager:
     def delete_task(self, id):
 
         deleteTask = self.search_by_id(id)
-
-        return self.task_list.remove(deleteTask)
+        if deleteTask is None:
+            return None
+        else:
+            return self.task_list.remove(deleteTask)
 
     def show_tasks(self):
 
@@ -29,3 +31,5 @@ class Task_manager:
         for task in self.task_list:
             if task.id == id:
                 return task
+            
+        return None
