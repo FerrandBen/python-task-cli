@@ -53,3 +53,19 @@ python-task-cli/
 - Gestion des erreurs
 - Bonne structure de projet Python
 - Conventional Commits
+
+---
+
+## ⚙️ Installation
+- git clone https://github.com/FerrandBen/python-task-cli
+- Créer et activer le venv
+- Aucune dépendance externe requise
+
+---
+
+## 🚀 Utilisation
+
+- python main.py add "Ma tâche"
+- python main.py list
+- python main.py done <id>
+- python main.py delete <id>
